@@ -1,7 +1,7 @@
 body {
   background-color: black;
   font-family: monospace;
-  color: #ddd;
+  color: #dddddd;
 }
 
 h1 {
@@ -28,6 +28,6 @@ h2 {
   font-family: monospace;
   color: #ddd;
   font-size: 30px;
-  border: 1px solid #333;
+  border: 1px solid #333333;
   border-radius: 1px;
 }
