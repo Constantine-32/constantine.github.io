@@ -1,6 +1,7 @@
 var width = 9
 var height = 9
 var matrix = new Array(width*height)
+var game = true
 
 function click(idx) {
   matrix[idx] ^= 1
@@ -41,7 +42,7 @@ function iniHtmlMatrix() {
 
 function updateHtmlMatrix() {
   for (var i = 0; i < matrix.length; i++) {
-    document.getElementById(i).style.backgroundColor =  matrix[i] === 0 ? "#111111" : "#888888"
+    document.getElementById(i).style.backgroundColor =  matrix[i] === 0 ? "#000000" : "#999999"
   }
 }
 
@@ -49,7 +50,7 @@ function toggleState(idx) {
   if (idx < 0) return;
   if (idx >= width*height) return;
   matrix[idx] ^= 1
-  document.getElementById(idx).style.backgroundColor = matrix[idx] === 0 ? "#111111" : "#888888"
+  document.getElementById(idx).style.backgroundColor = matrix[idx] === 0 ? "#000000" : "#999999"
 }
 
 function checkWin() {
@@ -69,16 +70,20 @@ function getEventId() {
 }
 
 function mouseClick() {
-  var idx = getEventId()
-  toggleState(idx)
-  if (idx >= width) toggleState(idx-width)
-  if (idx%width >= 1) toggleState(idx-1)
-  if (idx%width <= width-2) toggleState(idx+1)
-  if (idx+width < height*width) toggleState(idx+width)
-  if (checkWin()) {
-    alert("You Won!")
-    iniMatrix()
-    updateHtmlMatrix()
+  if (game) {
+    var idx = getEventId()
+    toggleState(idx)
+    if (idx >= width) toggleState(idx - width)
+    if (idx % width >= 1) toggleState(idx - 1)
+    if (idx % width <= width - 2) toggleState(idx + 1)
+    if (idx + width < height * width) toggleState(idx + width)
+    if (checkWin()) {
+      game = false
+      document.getElementById("title").innerHTML = "You Won!"
+      // alert("You Won!")
+      // iniMatrix()
+      // updateHtmlMatrix()
+    }
   }
 }
 
