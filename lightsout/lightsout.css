@@ -1,28 +1,24 @@
 html {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  background-color: #000000;
+  background-color: #000;
   font-family: monospace;
-  color: #dddddd;
+  color: #ddd;
+  text-align: center;
 }
 
-body {
-  display: flex;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  justify-content: center;
-}
-
-.container {
+#container {
   position: absolute;
-  align-self: center;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 450px;
+  width: 450px;
 }
 
 h1 {
   font-size: 50px;
-  color: #dddddd;
+  color: #ddd;
 }
 
 table {
@@ -33,5 +29,5 @@ td {
   font-size: 24pt;
   height: 1.5em;
   width: 1.5em;
-  border: 1px solid #000000;
+  border: 1px solid #000;
 }

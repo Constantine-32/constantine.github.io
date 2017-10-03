@@ -42,7 +42,7 @@ function iniHtmlMatrix() {
 
 function updateHtmlMatrix() {
   for (var i = 0; i < matrix.length; i++) {
-    document.getElementById(i).style.backgroundColor =  matrix[i] === 0 ? "#000000" : "#999999"
+    document.getElementById(""+i).style.backgroundColor =  matrix[i] === 0 ? "#000000" : "#999999"
   }
 }
 
