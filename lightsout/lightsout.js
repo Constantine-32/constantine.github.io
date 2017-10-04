@@ -15,34 +15,28 @@ function iniMatrix() {
   for (var i = 0; i < matrix.length; i++) {
     matrix[i] = 0
   }
-  for (i = 0; i < 20; i++) {
+  for (i = 0; i < width*height; i++) {
     click(Math.floor(Math.random() * matrix.length))
   }
 }
 
 function iniHtmlMatrix() {
   var container = document.getElementById("container")
-  var table = document.createElement("table")
-  var tbody = document.createElement("tbody")
-  for (var i = 0; i < height; i++) {
-    var tr = document.createElement("tr")
-    for (var j = 0; j < width; j++) {
-      var index = i*width+j
-      var td = document.createElement("td")
-      td.id = index
-      td.onmousedown = mouseClick;
-      tr.appendChild(td)
-    }
-    tbody.appendChild(tr)
+  container.style.height = height * 50 + "px"
+  container.style.width = width * 50 + "px"
+  for (var i = 0; i < height*width; i++) {
+    var div = document.createElement("div")
+    div.className = "square"
+    div.id = i
+    div.onmousedown = mouseClick
+    container.appendChild(div)
   }
-  table.appendChild(tbody)
-  container.appendChild(table)
   updateHtmlMatrix()
 }
 
 function updateHtmlMatrix() {
   for (var i = 0; i < matrix.length; i++) {
-    document.getElementById(""+i).style.backgroundColor =  matrix[i] === 0 ? "#000000" : "#999999"
+    document.getElementById(""+i).style.backgroundColor =  matrix[i] === 0 ? "#000" : "#333"
   }
 }
 
@@ -50,7 +44,7 @@ function toggleState(idx) {
   if (idx < 0) return;
   if (idx >= width*height) return;
   matrix[idx] ^= 1
-  document.getElementById(idx).style.backgroundColor = matrix[idx] === 0 ? "#000000" : "#999999"
+  document.getElementById(idx).style.backgroundColor = matrix[idx] === 0 ? "#000" : "#333"
 }
 
 function checkWin() {
@@ -80,10 +74,12 @@ function mouseClick() {
     if (checkWin()) {
       game = false
       document.getElementById("title").innerHTML = "You Won!"
-      // alert("You Won!")
-      // iniMatrix()
-      // updateHtmlMatrix()
     }
+  } else {
+    game = true
+    iniMatrix()
+    updateHtmlMatrix()
+    document.getElementById("title").innerHTML = "Lights Out"
   }
 }
 
