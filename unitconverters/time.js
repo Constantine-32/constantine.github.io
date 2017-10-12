@@ -5,7 +5,10 @@ function getElements() {
           document.getElementById("days"),
           document.getElementById("weeks"),
           document.getElementById("months"),
-          document.getElementById("years")]
+          document.getElementById("years"),
+          document.getElementById("humans"),
+          document.getElementById("earth"),
+          document.getElementById("universe")]
 }
 
 function updateElements(elements) {
@@ -24,6 +27,9 @@ function updateSeconds() {
   ele[4].value = Math.floor(ele[0].value / 604800)
   ele[5].value = Math.floor(ele[0].value / 2628000)
   ele[6].value = Math.floor(ele[0].value / 31536000)
+  ele[7].value = Math.floor(ele[0].value / 2491344000)
+  ele[8].value = Math.floor(ele[0].value / 143173440000000000)
+  ele[9].value = Math.floor(ele[0].value / 435165264000000000)
   updateElements(ele)
 }
 
@@ -60,5 +66,23 @@ function updateMonths() {
 function updateYears() {
   var ele = document.getElementById("years")
   if (!isNaN(ele.value) && ele.value >= 0) document.getElementById("seconds").value = Math.floor(ele.value * 31536000)
+  updateSeconds()
+}
+
+function updateHumans() {
+  var ele = document.getElementById("humans")
+  if (!isNaN(ele.value) && ele.value >= 0) document.getElementById("seconds").value = Math.floor(ele.value * 2491344000)
+  updateSeconds()
+}
+
+function updateEarth() {
+  var ele = document.getElementById("earth")
+  if (!isNaN(ele.value) && ele.value >= 0) document.getElementById("seconds").value = Math.floor(ele.value * 143173440000000000)
+  updateSeconds()
+}
+
+function updateUniverse() {
+  var ele = document.getElementById("universe")
+  if (!isNaN(ele.value) && ele.value >= 0) document.getElementById("seconds").value = Math.floor(ele.value * 435165264000000000)
   updateSeconds()
 }
