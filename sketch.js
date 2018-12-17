@@ -1,5 +1,5 @@
 function createCenteredCanvas() {
-  createCanvas(400, 400, WEBGL).position(
+  createCanvas(390, 390, WEBGL).position(
     (windowWidth - width) / 2,
     (windowHeight - height) / 2
   )
@@ -7,6 +7,8 @@ function createCenteredCanvas() {
 
 function setup() {
   createCenteredCanvas()
+  stroke(255)
+  strokeWeight(2)
   draw()
 }
 
@@ -17,25 +19,10 @@ function windowResized() {
 
 function draw() {
   background(0)
-  noFill()
-  stroke(255)
-  drawFrame()
   rotateX(frameCount *  0.01)
   rotateY(frameCount *  0.01)
   rotateZ(frameCount *  0.01)
-  stroke('#fff')
-  strokeWeight(2)
   dodecahedron(80)
-}
-
-function drawFrame() {
-  stroke('#fff')
-  strokeWeight(1)
-  const d = width / 2
-  line(-d, -d,  d, -d)
-  line(-d+1, -d+1, -d,  d)
-  line( d, -d, d, d)
-  line(-d,  d,  d-1,  d-1)
 }
 
 function dodecahedron(r) {
