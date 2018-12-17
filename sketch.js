@@ -7,8 +7,6 @@ function createCenteredCanvas() {
 
 function setup() {
   createCenteredCanvas()
-  stroke(255)
-  strokeWeight(2)
   draw()
 }
 
@@ -19,6 +17,8 @@ function windowResized() {
 
 function draw() {
   background(0)
+  stroke(255)
+  strokeWeight(2)
   rotateX(frameCount *  0.01)
   rotateY(frameCount *  0.01)
   rotateZ(frameCount *  0.01)
