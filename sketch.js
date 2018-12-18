@@ -56,15 +56,6 @@ function icosahedron(r) {
   line(...z4, ...x3)
   line(...z4, ...x4)
 
-  line(...y1, ...z1)
-  line(...y1, ...z2)
-  line(...y2, ...z3)
-  line(...y2, ...z4)
-  line(...y3, ...z1)
-  line(...y3, ...z2)
-  line(...y4, ...z3)
-  line(...y4, ...z4)
-
   line(...x1, ...y1)
   line(...x1, ...y2)
   line(...x2, ...y3)
@@ -73,6 +64,15 @@ function icosahedron(r) {
   line(...x3, ...y2)
   line(...x4, ...y3)
   line(...x4, ...y4)
+
+  line(...y1, ...z1)
+  line(...y1, ...z2)
+  line(...y2, ...z3)
+  line(...y2, ...z4)
+  line(...y3, ...z1)
+  line(...y3, ...z2)
+  line(...y4, ...z3)
+  line(...y4, ...z4)
 }
 
 function dodecahedron(r) {
@@ -108,28 +108,28 @@ function dodecahedron(r) {
 
   line(...z1, ...c1)
   line(...z1, ...c5)
-  line(...z3, ...c3)
-  line(...z3, ...c7)
   line(...z2, ...c2)
   line(...z2, ...c6)
+  line(...z3, ...c3)
+  line(...z3, ...c7)
   line(...z4, ...c4)
   line(...z4, ...c8)
 
   line(...x1, ...c1)
   line(...x1, ...c3)
-  line(...x3, ...c2)
-  line(...x3, ...c4)
   line(...x2, ...c5)
   line(...x2, ...c7)
+  line(...x3, ...c2)
+  line(...x3, ...c4)
   line(...x4, ...c6)
   line(...x4, ...c8)
 
   line(...y1, ...c1)
   line(...y1, ...c2)
-  line(...y3, ...c5)
-  line(...y3, ...c6)
   line(...y2, ...c3)
   line(...y2, ...c4)
+  line(...y3, ...c5)
+  line(...y3, ...c6)
   line(...y4, ...c7)
   line(...y4, ...c8)
 }
