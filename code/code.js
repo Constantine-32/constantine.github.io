@@ -1,10 +1,11 @@
 const data = document.getElementById('data')
 const salt = document.getElementById('salt')
 const hash = document.getElementById('hash')
+const underscore = document.getElementById('underscore')
 const strtob = (s) => s.split('').map(x => x.charCodeAt(0))
 const hashtop = (hash) => {
   const pass = hash.map(x => 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789XD'[x & 0x3f])
-  pass[hash.map(x => (x & 0xC0) >> 6).reduce((a, b) => a + b) % 32] = '_'
+  if (underscore.checked) pass[hash.map(x => (x & 0xC0) >> 6).reduce((a, b) => a + b) % 32] = '_'
   return pass.join('')
 }
 const gethash = (text) => {
@@ -73,4 +74,6 @@ const gethash = (text) => {
   }
   return hash;
 }
-const getHash = () => hash.value = hashtop(gethash(strtob(data.value + salt.value)))
+const getHash = () => {
+  hash.value = hashtop(gethash(strtob(data.value + salt.value)))
+}
