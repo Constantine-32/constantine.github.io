@@ -6,15 +6,16 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="content_wrapper">
-  <input type="text" class="input-monospace" id="data" onkeyup="getHash()"><br>
-  <input type="password" class="input-monospace" id="salt" onkeyup="getHash()"><br>
+<div class="content-wrapper">
+  <input type="text" class="input-monospace" id="data">
+  <div class="box" id="view"></div>
+  <input type="password" class="input-monospace" id="salt">
+  <div class="box" id="copy"></div>
   <input type="text" class="input-monospace" id="hash" readonly>
-  <input type="checkbox" class="code-checkbox" id="underscore" checked onclick="getHash()">
-  <div></div>
+  <input type="text" class="input-monospace" id="value" value="32" readonly>
+  <input type="range" class="code-range" id="range" min="1" max="32" value="32">
+  <input type="checkbox" class="code-checkbox" id="extra" checked>
 </div>
 <script type="text/javascript" src="code.js"></script>
 </body>
 </html>
-
-

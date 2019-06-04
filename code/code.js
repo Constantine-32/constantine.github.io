@@ -1,13 +1,21 @@
 const data = document.getElementById('data')
+const view = document.getElementById('view')
 const salt = document.getElementById('salt')
+const copy = document.getElementById('copy')
 const hash = document.getElementById('hash')
-const underscore = document.getElementById('underscore')
+const value = document.getElementById('value')
+const range = document.getElementById('range')
+const extra = document.getElementById('extra')
+
 const strtob = (s) => s.split('').map(x => x.charCodeAt(0))
-const hashtop = (hash) => {
+
+const hashtop = (hash, lenght, special=true) => {
+  if (lenght < 1 || lenght > 32) return
   const pass = hash.map(x => 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789XD'[x & 0x3f])
-  if (underscore.checked) pass[hash.map(x => (x & 0xC0) >> 6).reduce((a, b) => a + b) % 32] = '_'
-  return pass.join('')
+  if (special) pass[hash.map(x => (x & 0xC0) >> 6).reduce((a, b) => a + b) % lenght] = '_'
+  return pass.slice(0, lenght).join('')
 }
+
 const gethash = (text) => {
   const ror = (a, n) => (a >>> n) | (a << 32 - n)
   const delta0 = (a) => ror(a, 7) ^ ror(a, 18) ^ (a >>> 3)
@@ -74,6 +82,16 @@ const gethash = (text) => {
   }
   return hash;
 }
+
 const getHash = () => {
-  hash.value = hashtop(gethash(strtob(data.value + salt.value)))
+  hash.value = hashtop(gethash(strtob(data.value + salt.value)), range.value, extra.checked)
 }
+
+data.addEventListener('keyup', () => getHash())
+// view.addEventListener('')
+salt.addEventListener('keyup', () => getHash())
+// copy.addEventListener('')
+hash.addEventListener('click', () => hash.select())
+// value.addEventListener('')
+range.addEventListener('input', (e) => { value.value = range.value; getHash()})
+extra.addEventListener('click', () => getHash())
