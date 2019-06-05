@@ -9,11 +9,11 @@ const extra = document.getElementById('extra')
 
 const strtob = (s) => s.split('').map(x => x.charCodeAt(0))
 
-const hashtop = (hash, lenght, special=true) => {
-  if (lenght < 1 || lenght > 32) return
+const hashtop = (hash, length, special=true) => {
+  if (length < 1 || length > 32) return
   const pass = hash.map(x => 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789XD'[x & 0x3f])
-  if (special) pass[hash.map(x => (x & 0xC0) >> 6).reduce((a, b) => a + b) % lenght] = '_'
-  return pass.slice(0, lenght).join('')
+  if (special) pass[hash.map(x => (x & 0xC0) >> 6).reduce((a, b) => a + b) % length] = '_'
+  return pass.slice(0, length).join('')
 }
 
 const gethash = (text) => {
