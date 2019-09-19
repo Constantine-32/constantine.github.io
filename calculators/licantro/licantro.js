@@ -101,7 +101,7 @@ const updateList = () => {
   if (esquivo.checked) { list.push(['Esquivo', 3]); town_num-- }
   if (infectado.checked) { list.push(['Infectado', 3]); town_num-- }
   if (tipo_duro.checked) { list.push(['Tipo duro', 3]); town_num-- }
-  if (hermanos.checked) { list.push(['Hermanos', 3]); town_num-- }
+  if (hermanos.checked) { list.push(['Hermanos', 3]); town_num--; list.push(['Hermanos', 3]); town_num-- }
   if (masa.checked) { list.push(['Masa', 3]); town_num-- }
   if (peludo.checked) { list.push(['Peludo', 3]); town_num-- }
   if (sirvienta.checked) { list.push(['Sirvienta', 3]); town_num-- }
