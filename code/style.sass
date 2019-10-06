@@ -7,14 +7,16 @@ body
   margin: 0
   background: #000
 
-.content
+#content
   position: absolute
   top: 45%
   left: 50%
+  width: 520px
+  height: 436px
   transform: translate(-50%, -50%)
   display: grid
-  grid-template-columns: 40px 54px 40px 234px 40px 54px 40px
-  grid-template-rows: 40px 54px 40px 54px 40px 54px 40px 54px 40px
+  grid-template-columns: 3fr 4fr 3fr 17fr 3fr 4fr 3fr
+  grid-template-rows: 3fr 4fr 3fr 4fr 3fr 4fr 3fr 4fr 3fr
 
 #data
   grid-column-start: 4
@@ -51,8 +53,6 @@ body
   grid-column-end: 7
   grid-row-start: 6
   grid-row-end: 7
-  width: 422px
-  margin: auto
 
 #value
   grid-column-start: 2
@@ -92,8 +92,6 @@ body
 .checkbox
   -webkit-appearance: none
   margin: 0
-  width: 54px
-  height: 54px
 
 .range
   -webkit-appearance: none
@@ -109,7 +107,7 @@ body
   border: $border
   border-radius: 50%
 
-.content, .box, .text, .checkbox, .range
+#content, .box, .text, .checkbox, .range
   background: $color-background
   box-sizing: border-box
   border: $border
@@ -117,3 +115,10 @@ body
 
 ::selection
   background: $color-text
+
+input
+  width: 100%
+
+@media screen and (max-width: 520px)
+  #content
+    width: 100%
