@@ -88,15 +88,35 @@ const gethash = (text) => {
 }
 
 const getHash = () => {
-  hash.value = hashtop(gethash(strtob(data.value + salt.value)), range.value, extra.checked)
+  hash.value = hashtop(gethash(strtob(data.value.toLowerCase() + salt.value)), range.value, extra.checked)
+}
+
+const execCopy = () => {
+  if (navigator.userAgent.match(/ipad|ipod|iphone/i)) {
+    const tempCE = hash.contentEditable
+    const tempRO = hash.readOnly
+    const range = document.createRange()
+    hash.contentEditable = true
+    hash.readOnly = false
+    range.selectNodeContents(hash)
+    const s = window.getSelection()
+    s.removeAllRanges()
+    s.addRange(range)
+    hash.setSelectionRange(0, 999999)
+    hash.contentEditable = tempCE
+    hash.readOnly = tempRO
+  } else hash.select()
+  document.execCommand('copy')
 }
 
 data.addEventListener('keyup', () => getHash())
 view.addEventListener('click', () => { if (salt.type === 'password') { salt.type = 'text' } else { salt.type = 'password' } })
 salt.addEventListener('keyup', () => getHash())
-copy.addEventListener('click', () => { hash.select(); document.execCommand('copy'); })
+copy.addEventListener('click', () => execCopy())
 hash.addEventListener('click', () => hash.select())
 value.addEventListener('click', () => value.select())
 value.addEventListener('keyup', () => { if (isNaN(value.value) || value.value < 1 || value.value > 32) value.value = '32'; range.value = value.value; getHash(); })
 range.addEventListener('input', () => { value.value = range.value; getHash()})
 extra.addEventListener('click', () => getHash())
+
+data.select()
