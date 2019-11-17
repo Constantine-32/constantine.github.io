@@ -1,0 +1,25 @@
+$color-background: #050505
+$color-border: #121212
+$border: 1px solid $color-border
+
+body
+  margin: 0
+  background: #000
+
+.content
+  position: absolute
+  top: 50%
+  left: 50%
+  width: 1236px
+  height: 848px
+  transform: translate(-50%, -50%)
+  display: grid
+  grid-template-columns: repeat(6, 1fr)
+  grid-template-rows: repeat(8, 1fr)
+  background: $color-background
+  border: $border
+
+.domino
+  background: url("tiles.png")
+  margin: 2px
+  border: $border
