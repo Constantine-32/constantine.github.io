@@ -72,7 +72,7 @@ $(function () {
         }
 
         race = newRace
-        changeToIcons()
+        updateIcons()
         recalc()
       }
     })
@@ -194,7 +194,7 @@ $(function () {
     else $(bpText).addClass('neutral')
   }
 
-  function changeToIcons() {
+  function updateIcons() {
     for (const button of buttons) {
       const aux = button.id.replace(/^[oia]/g, '')
       button.value = ''
@@ -205,6 +205,4 @@ $(function () {
       }
     }
   }
-
-  // changeToIcons()
 })
