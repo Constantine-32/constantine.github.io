@@ -93,6 +93,12 @@ $(function () {
         case 'adig':
           if ((vs['odig'] + vs['adig'] < 2)) vs[id]++
           break;
+        case 'ote':
+          if (vs['ote'] < 4) vs[id]++
+          break
+        case 'oship':
+          if (vs['oship'] < 4) vs[id]++
+          break
         default:
           vs[id]++
       }
