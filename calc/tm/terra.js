@@ -1,19 +1,19 @@
 $(function () {
   const dd = {
-    'Auren':      {'sh': [4,  6], 'sa': [4,  8]},
-    'Witches':    {'sh': [4,  6], 'sa': [4,  6]},
-    'Fakirs':     {'sh': [4, 10], 'sa': [4,  6]},
-    'Nomads':     {'sh': [4,  8], 'sa': [4,  6]},
-    'Chaos':      {'sh': [4,  4], 'sa': [4,  8]},
-    'Giants':     {'sh': [4,  6], 'sa': [4,  6]},
-    'Swarmlings': {'sh': [5,  8], 'sa': [5,  8]},
-    'Mermaids':   {'sh': [4,  6], 'sa': [4,  8]},
-    'Dwarves':    {'sh': [4,  6], 'sa': [4,  6]},
-    'Engineers':  {'sh': [4,  8], 'sa': [4,  6]},
-    'Halflings':  {'sh': [4,  8], 'sa': [4,  6]},
-    'Cultists':   {'sh': [4,  8], 'sa': [4,  8]},
-    'Alchemists': {'sh': [4,  6], 'sa': [4,  6]},
-    'Darklings':  {'sh': [4,  6], 'sa': [4, 10]}
+    'Auren':      {'sh': [4,  6], 'sa': [4,  8], 'color': 'g'},
+    'Witches':    {'sh': [4,  6], 'sa': [4,  6], 'color': 'g'},
+    'Fakirs':     {'sh': [4, 10], 'sa': [4,  6], 'color': 'y'},
+    'Nomads':     {'sh': [4,  8], 'sa': [4,  6], 'color': 'y'},
+    'Chaos':      {'sh': [4,  4], 'sa': [4,  8], 'color': 'r'},
+    'Giants':     {'sh': [4,  6], 'sa': [4,  6], 'color': 'r'},
+    'Swarmlings': {'sh': [5,  8], 'sa': [5,  8], 'color': 'b'},
+    'Mermaids':   {'sh': [4,  6], 'sa': [4,  8], 'color': 'b'},
+    'Dwarves':    {'sh': [4,  6], 'sa': [4,  6], 'color': 'w'},
+    'Engineers':  {'sh': [4,  8], 'sa': [4,  6], 'color': 'w'},
+    'Halflings':  {'sh': [4,  8], 'sa': [4,  6], 'color': 'o'},
+    'Cultists':   {'sh': [4,  8], 'sa': [4,  8], 'color': 'o'},
+    'Alchemists': {'sh': [4,  6], 'sa': [4,  6], 'color': 'd'},
+    'Darklings':  {'sh': [4,  6], 'sa': [4, 10], 'color': 'd'}
   }
 
   const vs = {
@@ -21,6 +21,7 @@ $(function () {
     'aw': 0, 'ac': 0, 'ap': 0, 'adig': 0, 'iw': 0, 'ic': 0, 'ip': 0, 'bw': 0, 'bc': 0, 'bp': 0
   }
 
+  const buttons = $('.button')
   const odigButton = $('#odig')
   const odigText = $('#odig-text')
   const adigButton = $('#adig')
@@ -71,12 +72,13 @@ $(function () {
         }
 
         race = newRace
+        changeToIcons()
         recalc()
       }
     })
   })
 
-  $('.button').each(function (_, element) {
+  buttons.each(function (_, element) {
     element.addEventListener('click', function (event) {
       if (Array.from(event.target.classList).includes('disabled')) return
       const id = event.target.id
@@ -191,4 +193,18 @@ $(function () {
     else if (vs['bp'] > 0) $(bpText).addClass('positive')
     else $(bpText).addClass('neutral')
   }
+
+  function changeToIcons() {
+    for (const button of buttons) {
+      const aux = button.id.replace(/^[oia]/g, '')
+      button.value = ''
+      if (aux === 'ship' || aux === 'w' || aux === 'c' || aux === 'spd') {
+        button.style.background = 'url("./img/' + aux + '.png") center no-repeat #111'
+      } else {
+        button.style.background = 'url("./img/' + dd[race]['color'] + aux + '.png") center no-repeat #111'
+      }
+    }
+  }
+
+  changeToIcons()
 })
