@@ -206,5 +206,5 @@ $(function () {
     }
   }
 
-  changeToIcons()
+  // changeToIcons()
 })
