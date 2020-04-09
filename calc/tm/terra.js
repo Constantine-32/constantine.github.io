@@ -9,7 +9,7 @@ $(function () {
     'Swarmlings': {'sh': [5,  8], 'sa': [5,  8], 'color': 'b'},
     'Mermaids':   {'sh': [4,  6], 'sa': [4,  8], 'color': 'b'},
     'Dwarves':    {'sh': [4,  6], 'sa': [4,  6], 'color': 'w'},
-    'Engineers':  {'sh': [4,  8], 'sa': [4,  6], 'color': 'w'},
+    'Engineers':  {'sh': [3,  6], 'sa': [3,  6], 'color': 'w'},
     'Halflings':  {'sh': [4,  8], 'sa': [4,  6], 'color': 'o'},
     'Cultists':   {'sh': [4,  8], 'sa': [4,  8], 'color': 'o'},
     'Alchemists': {'sh': [4,  6], 'sa': [4,  6], 'color': 'd'},
@@ -159,6 +159,9 @@ $(function () {
     if (race === 'Swarmlings') {
       vs['bw'] -= vs['odw'] * 2 + vs['otp'] * 3 + vs['otpp'] * 3 + vs['ote'] * 3
       vs['bc'] -= vs['odw'] * 3 + vs['otp'] * 4 + vs['otpp'] * 8 + vs['ote'] * 6
+    } else if (race === 'Engineers') {
+      vs['bw'] -= vs['odw']     + vs['otp']     + vs['otpp']     + vs['ote']
+      vs['bc'] -= vs['odw']     + vs['otp'] * 2 + vs['otpp'] * 4 + vs['ote'] * 4
     } else {
       vs['bw'] -= vs['odw']     + vs['otp'] * 2 + vs['otpp'] * 2 + vs['ote'] * 2
       vs['bc'] -= vs['odw'] * 2 + vs['otp'] * 3 + vs['otpp'] * 6 + vs['ote'] * 5
