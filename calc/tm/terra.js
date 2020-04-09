@@ -85,19 +85,26 @@ $(function () {
       if (vs[id] === 99) return
 
       switch (id) {
-        case 'osa':
-        case 'osh':
-          if (vs[id] === 0) vs[id]++
-          break;
-        case 'odig':
-        case 'adig':
-          if ((vs['odig'] + vs['adig'] < 2)) vs[id]++
-          break;
+        case 'oship':
+          if (vs['oship'] < 4) vs[id]++
+          break
+        case 'odw':
+          if (vs['odw'] < 16) vs[id]++
+          break
+        case 'otp':
+        case 'otpp':
+          if (vs['otp'] + vs['otpp'] < 9) vs[id]++
+          break
         case 'ote':
           if (vs['ote'] < 4) vs[id]++
           break
-        case 'oship':
-          if (vs['oship'] < 4) vs[id]++
+        case 'osa':
+        case 'osh':
+          if (vs[id] < 1) vs[id]++
+          break
+        case 'odig':
+        case 'adig':
+          if ((vs['odig'] + vs['adig'] < 2)) vs[id]++
           break
         default:
           vs[id]++
