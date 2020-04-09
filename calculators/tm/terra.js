@@ -1,6 +1,5 @@
 $(function () {
   const dd = {
-    'Standard':   {'dw': [1, 2], 'tp': [2, 3], 'te': [2, 5]},
     'Auren':      {'sh': [4,  6], 'sa': [4,  8]},
     'Witches':    {'sh': [4,  6], 'sa': [4,  6]},
     'Fakirs':     {'sh': [4, 10], 'sa': [4,  6]},
@@ -23,7 +22,6 @@ $(function () {
   }
 
   let race = 'Darklings'
-  const stdd = 'Standard'
 
   $('.race-button').each(function (_, element) {
     element.addEventListener('click', function (event) {
@@ -88,16 +86,16 @@ $(function () {
 
     // Std structures
     if (race === 'Swarmlings') {
-      vs['bw'] -= vs['odw'] * (dd[stdd]['dw'][0]+1) + vs['otp'] * (dd[stdd]['tp'][0]+1) + vs['otpp'] * (dd[stdd]['tp'][0]+1) + vs['ote'] * (dd[stdd]['te'][0]+1)
-      vs['bc'] -= vs['odw'] * (dd[stdd]['dw'][1]+1) + vs['otp'] * (dd[stdd]['tp'][1]+1) + vs['otpp'] * (dd[stdd]['tp'][1]+1) * 2 + vs['ote'] * (dd[stdd]['te'][1]+1)
+      vs['bw'] -= vs['odw'] * 2 + vs['otp'] * 3 + vs['otpp'] * 3 + vs['ote'] * 3
+      vs['bc'] -= vs['odw'] * 3 + vs['otp'] * 4 + vs['otpp'] * 8 + vs['ote'] * 6
     } else {
-      vs['bw'] -= vs['odw'] * dd[stdd]['dw'][0] + vs['otp'] * dd[stdd]['tp'][0] + vs['otpp'] * dd[stdd]['tp'][0] + vs['ote'] * dd[stdd]['te'][0]
-      vs['bc'] -= vs['odw'] * dd[stdd]['dw'][1] + vs['otp'] * dd[stdd]['tp'][1] + vs['otpp'] * dd[stdd]['tp'][1] * 2 + vs['ote'] * dd[stdd]['te'][1]
+      vs['bw'] -= vs['odw']     + vs['otp'] * 2 + vs['otpp'] * 2 + vs['ote'] * 2
+      vs['bc'] -= vs['odw'] * 2 + vs['otp'] * 3 + vs['otpp'] * 6 + vs['ote'] * 5
     }
 
     // Specific structures
-    vs['bw'] -= (vs['osa'] * dd[race]['sa'][0] + vs['osh'] * dd[race]['sh'][0])
-    vs['bc'] -= (vs['osa'] * dd[race]['sa'][1] + vs['osh'] * dd[race]['sh'][1])
+    vs['bw'] -= vs['osa'] * dd[race]['sa'][0] + vs['osh'] * dd[race]['sh'][0]
+    vs['bc'] -= vs['osa'] * dd[race]['sa'][1] + vs['osh'] * dd[race]['sh'][1]
 
     // Dig
     if (race !== 'Darklings') {
