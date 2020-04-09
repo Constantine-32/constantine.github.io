@@ -21,6 +21,14 @@ $(function () {
     'aw': 0, 'ac': 0, 'ap': 0, 'iw': 0, 'ic': 0, 'ip': 0, 'bw': 0, 'bc': 0, 'bp': 0
   }
 
+  const digButton = $('#odig')
+  const digText = $('#odig-text')
+  const shipButton = $('#oship')
+  const shipText = $('#oship-text')
+  const bwText = $("#bw-text")[0]
+  const bcText = $('#bc-text')[0]
+  const bpText = $('#bp-text')[0]
+
   let race = 'Darklings'
 
   $('.race-button').each(function (_, element) {
@@ -29,6 +37,31 @@ $(function () {
       if (newRace !== race) {
         $('#'+race).removeClass('selected')
         $('#'+newRace).addClass('selected')
+
+        if (race === 'Darklings') {
+          digButton.removeClass('disabled')
+          digText.removeClass('disabled')
+          digText.prop('disabled', false)
+        }
+
+        if (newRace === 'Darklings') {
+          digButton.addClass('disabled')
+          digText.addClass('disabled')
+          digText.prop('disabled', true)
+        }
+
+        if (race === 'Fakirs' || race === 'Dwarves') {
+          shipButton.removeClass('disabled')
+          shipText.removeClass('disabled')
+          shipText.prop('disabled', false)
+        }
+
+        if (newRace === 'Fakirs' || newRace === 'Dwarves') {
+          shipButton.addClass('disabled')
+          shipText.addClass('disabled')
+          shipText.prop('disabled', true)
+        }
+
         race = newRace
         recalc()
       }
@@ -37,6 +70,7 @@ $(function () {
 
   $('.button').each(function (_, element) {
     element.addEventListener('click', function (event) {
+      if (Array.from(event.target.classList).includes('disabled')) return
       const id = event.target.id
       if (vs[id] === 99) return
       vs[id]++
@@ -45,6 +79,7 @@ $(function () {
     })
 
     element.addEventListener('contextmenu', function (event) {
+      if (Array.from(event.target.classList).includes('disabled')) return
       const id = event.target.id
       if (vs[id] === 0) return
       vs[id]--
@@ -110,8 +145,22 @@ $(function () {
       vs['bp'] -= vs['oship']
     }
 
-    $('#bw-text')[0].value = vs['bw']
-    $('#bc-text')[0].value = vs['bc']
-    $('#bp-text')[0].value = vs['bp']
+    bwText.value = vs['bw']
+    $(bwText).removeClass('neutral').removeClass('positive').removeClass('negative')
+    if (vs['bw'] < 0) $(bwText).addClass('negative')
+    else if (vs['bw'] > 0) $(bwText).addClass('positive')
+    else $(bwText).addClass('neutral')
+
+    bcText.value = vs['bc']
+    $(bcText).removeClass('neutral').removeClass('positive').removeClass('negative')
+    if (vs['bc'] < 0) $(bcText).addClass('negative')
+    else if (vs['bc'] > 0) $(bcText).addClass('positive')
+    else $(bcText).addClass('neutral')
+
+    bpText.value = vs['bp']
+    $(bpText).removeClass('neutral').removeClass('positive').removeClass('negative')
+    if (vs['bp'] < 0) $(bpText).addClass('negative')
+    else if (vs['bp'] > 0) $(bpText).addClass('positive')
+    else $(bpText).addClass('neutral')
   }
 })

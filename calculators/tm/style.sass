@@ -20,8 +20,8 @@ body
   left: 50%
   transform: translate(-50%, -50%)
   display: grid
-  grid-template-columns: 20px repeat(9, 60px) 20px
-  grid-template-rows: repeat(4, 20px) 60px repeat(4, 20px) 60px repeat(3, 20px) 60px repeat(2, 20px)
+  grid-template-columns: 30px repeat(9, 80px) 30px
+  grid-template-rows: repeat(4, 30px) 80px repeat(4, 30px) 80px repeat(3, 30px) 80px repeat(2, 30px)
   grid-column-gap: 2px
   grid-row-gap: 2px
   background: $color-background
@@ -44,14 +44,30 @@ body
     cursor: pointer
 
   .race-button
-    font-size: 10px
+    font-size: 12px
 
   .title
     font-size: 12px
 
   .selected
-    background: #222
-    border: 1px solid #444
+    border-color: #9b59b6
+    background: #8e44ad
+
+  .neutral
+    border-color: #3498db
+    background-color: #2980b9
+
+  .positive
+    border-color: #2ecc71
+    background-color: #27ae60
+
+  .negative
+    border-color: #e74c3c
+    background-color: #c0392b
+
+  .disabled
+    color: #111
+    cursor: default
 
 
 ::selection
