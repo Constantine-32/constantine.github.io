@@ -1,0 +1,15 @@
+name: Prettier
+
+on: [push]
+
+jobs:
+  prettier:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Cloning the repository
+      uses: actions/checkout@v2
+    - name: Install prettier
+      run: sudo npm install --global prettier
+    - name: Prettify the Code
+      run: prettier --no-semi --single-quote --check "**/*.js"
